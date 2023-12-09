@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/colorfull"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="253dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:text="UG Footwear"
+                    android:textColor="#8929CD"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="120dp"
+                    android:gravity="center"
+                    android:text="Take the high road and go higher"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/startbutton"
+                    android:layout_width="236dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/color"
+                    android:text="Get Started" />
+
+        </LinearLayout>
+</LinearLayout>
