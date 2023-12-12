@@ -87,6 +87,7 @@
                 android:layout_height="40dp"
                 android:background="#B7353535"
                 android:ems="10"
+                android:maxLength="10"
                 android:hint="Enter Number"
                 android:textColorHint="#838080"
                 android:textColor="#EFEFEF"
@@ -100,7 +101,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/sendotpBtn"
             android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
