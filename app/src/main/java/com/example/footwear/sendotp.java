@@ -37,10 +37,33 @@ public class sendotp extends AppCompatActivity {
             public void onClick(View view) {
                 if (!enternumber.getText().toString().trim().isEmpty()) {
                     if ((enternumber.getText().toString().trim()).length()==10) {
-                        Intent intent=new Intent(getApplicationContext(),otp_verification.class);
-//                            startActivity(new Intent(getApplicationContext(),otp_verification.class));
-                        intent.putExtra("mobile",enternumber.getText().toString());
-                        startActivity(intent);
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                "+91" + enternumber.getText().toString(),
+                                60,
+                                TimeUnit.SECONDS,
+                                sendotp.this,
+                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                    @Override
+                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                                    }
+
+                                    @Override
+                                    public void onVerificationFailed(@NonNull FirebaseException e) {
+
+                                    }
+
+                                    @Override
+                                    public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                        super.onCodeSent(s, forceResendingToken);
+                                        Intent intent=new Intent(getApplicationContext(),otp_verification.class);
+                                        intent.putExtra("otp",s);
+                                        intent.putExtra("mobile",enternumber.getText().toString());
+                                        startActivity(intent);
+                                    }
+                                }
+                        );
+
 
                     }else {
                         Toast.makeText(getApplicationContext(), "please enter correct number", Toast.LENGTH_SHORT).show();
@@ -51,50 +74,7 @@ public class sendotp extends AppCompatActivity {
             }
         });
 
-//        sendotp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(!enternumber.getText().toString().isEmpty())
-//                {
-//                    if ((enternumber.getText().toString().trim()).length() == 10)
-//                    {
-//                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                                "+91" + enternumber.getText().toString(),
-//                                60,
-//                                TimeUnit.SECONDS,
-//                                sendotp.this,
-//                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//                                    @Override
-//                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-//
-//                                    }
-//
-//                                    @Override
-//                                    public void onVerificationFailed(@NonNull FirebaseException e) {
-//                                        Toast.makeText(sendotp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                    }
-//
-//                                    @Override
-//                                    public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken
-//                                                           forceResendingToken)
-//                                    {
-//                                        super.onCodeSent(s, forceResendingToken);
-//
-//                                        Intent intent = new Intent(getApplicationContext(), otp_verification.class);
-//                                        startActivity(intent);
-//                                    }
-//                                }
-//                        );
-//                    }
-//                    else {
-//                        Toast.makeText(sendotp.this, "Enter valid Number", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(sendotp.this, "Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+
 
     }
 }
